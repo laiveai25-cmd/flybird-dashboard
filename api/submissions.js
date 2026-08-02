@@ -23,7 +23,7 @@ export default async function handler(req, res) {
 
   // Only summary columns — keeps it fast and avoids shipping base64 blobs to the browser.
   const cols = "id,created_at,check_type,registration,date,engineer,airworthy,unserviceable_reason,emailed_at";
-  const params = [`select=${cols}`, "order=created_at.desc"];
+  const params = [`select=${cols}`, "order=created_at.desc", "limit=2000"];
 
   const enc = (v) => encodeURIComponent(String(v));
   if (req.query.from) params.push(`date=gte.${enc(req.query.from)}`);
