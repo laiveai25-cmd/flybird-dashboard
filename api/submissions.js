@@ -30,6 +30,8 @@ export default async function handler(req, res) {
   if (req.query.to) params.push(`date=lte.${enc(req.query.to)}`);
   if (req.query.registration && req.query.registration !== "all")
     params.push(`registration=eq.${enc(req.query.registration)}`);
+  if (req.query.engineer && req.query.engineer !== "all")
+    params.push(`engineer=eq.${enc(req.query.engineer)}`);
   if (req.query.airworthy && req.query.airworthy !== "all")
     params.push(`airworthy=eq.${enc(req.query.airworthy)}`);
 
